@@ -3,6 +3,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import {
   useAccount,
   useContractRead,
+  useContractReads,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
@@ -30,6 +31,20 @@ const Home = () => {
     args: [promptValue]
   });
 
+
+  const { data: supplyData2 } = useContactReads({
+    ...contractConfig,
+    functionName: 'ResponseReceived',
+    watch: true,
+  });
+
+  React.useEffect(() => {
+    if (supplyData2){
+      console.log("Supply Data 2 called", supplyData2)
+
+    }
+  }, []);
+
   const {
     data: mintData,
     write: mint,
@@ -38,6 +53,11 @@ const Home = () => {
     error: mintError
   } = useContractWrite(contractWriteConfig);
 
+
+  const {
+    data: supplyData,
+
+  } = useContractRead()
   const {
     data: txData,
     isSuccess: txSuccess,
