@@ -16,6 +16,7 @@ const contractConfig = {
 
 const Home = () => {
   const [mounted, setMounted] = React.useState(false);
+  const [selectedImage, setSelectedImage] = React.useState();
   React.useEffect(() => setMounted(true), []);
 
   const [totalMinted, setTotalMinted] = React.useState(0);
@@ -56,21 +57,22 @@ const Home = () => {
 
   const isMinted = txSuccess;
 
-  const selectImage = (url) => {
+  const selectImage = (e, url) => {
     console.log("Hello", url)
+    setSelectedImage(url)
   }
 
   const imageUrls = [
-    'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png',
     'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png',
     'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png',
     'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png'
   ]
 
   return (
-    <div className="page">
+    <div>
       <div className="container">
-        <div style={{ flex: '1 1 auto' }}>
+        <div className='d-flex flex-column'>
+        <div className=''>
           <div style={{ padding: '24px 24px 24px 0' }}>
             <h1>NFT Demo Mint</h1>
             <p style={{ margin: '12px 0 24px' }}>
@@ -91,18 +93,52 @@ const Home = () => {
           </div>
         </div>
 
-        <div style={{ flex: '0 0 auto' }}>
+        <div>
           {isConnected && (
 
             <div>
-              {imageUrls.map(url => (
-                <a onClick={() => selectImage(url)}>
-                <img alt="Qries" src={url} width="100" height="100"/>
-              </a>
-              ))}
+              {/* {imageUrls.map(url => (
+                <a onClick={() => selectImage(url)} className='border p-3' width="300" height="300">
+                  <img alt="Qries" src={url} width="100" height="100"/>
+                </a>
+              ))} */}
+
+              <section className="pb-4">
+                <div className="bg-white border rounded-5">
+                  <section className="p-4 text-center w-100">
+                    <section>
+                      <section>
+                        <div className="row">
+                          {imageUrls.map(url => (
+                            <div className="col-lg-4 mb-4 mb-lg-0" onClick={(e) => selectImage(e, url)}>
+                              <div className="bg-image hover-overlay ripple shadow-1-strong rounded" data-ripple-color="light">
+                                <img src={url} className="w-100"/>
+                                <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
+                                  <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.2)' }}></div>
+                                </a>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    </section>
+                  </section>
+                </div>
+
+                {selectedImage && (
+                  <div className="col-lg-4 mb-4 mb-lg-0">
+                    <div className="bg-image hover-overlay ripple shadow-1-strong rounded" data-ripple-color="light">
+                      <img src={selectedImage} className="w-100"/>
+                      <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
+                        <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.2)' }}></div>
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </section>
             </div>
           )}
-
+        </div>
         </div>
       </div>
     </div>
