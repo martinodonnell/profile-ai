@@ -1,4 +1,4 @@
-import React, { Image } from 'react';
+import React from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import {
   useAccount,
@@ -8,7 +8,6 @@ import {
   useWaitForTransaction,
 } from 'wagmi';
 import { abi } from '../contract-abi';
-import FlipCard, { BackCard, FrontCard } from './FlipCard';
 
 const contractConfig = {
   address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
@@ -57,6 +56,17 @@ const Home = () => {
 
   const isMinted = txSuccess;
 
+  const selectImage = (url) => {
+    console.log("Hello", url)
+  }
+
+  const imageUrls = [
+    'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png',
+    'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png',
+    'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png',
+    'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png'
+  ]
+
   return (
     <div className="page">
       <div className="container">
@@ -78,25 +88,20 @@ const Home = () => {
                 Error: {txError.message}
               </p>
             )}
-
-            {mounted && isConnected && !isMinted && (
-              <button
-                style={{ marginTop: 24 }}
-                disabled={!mint || isMintLoading || isMintStarted}
-                className="button"
-                data-mint-loading={isMintLoading}
-                data-mint-started={isMintStarted}
-                onClick={() => mint?.()}
-              >
-                {isMintLoading && 'Waiting for approval'}
-                {isMintStarted && 'Minting...'}
-                {!isMintLoading && !isMintStarted && 'Mint'}
-              </button>
-            )}
           </div>
         </div>
 
         <div style={{ flex: '0 0 auto' }}>
+          {isConnected && (
+
+            <div>
+              {imageUrls.map(url => (
+                <a onClick={() => selectImage(url)}>
+                <img alt="Qries" src={url} width="100" height="100"/>
+              </a>
+              ))}
+            </div>
+          )}
 
         </div>
       </div>
