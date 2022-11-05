@@ -17,6 +17,9 @@ const contractConfig = {
 const Home = () => {
   const [mounted, setMounted] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState();
+  const [promptValue, setPromptValue] = React.useState('');
+  const [go, setGo] = React.useState(false);
+
   React.useEffect(() => setMounted(true), []);
 
   const [totalMinted, setTotalMinted] = React.useState(0);
@@ -95,14 +98,17 @@ const Home = () => {
 
         <div>
           {isConnected && (
-
             <div>
-              {/* {imageUrls.map(url => (
-                <a onClick={() => selectImage(url)} className='border p-3' width="300" height="300">
-                  <img alt="Qries" src={url} width="100" height="100"/>
-                </a>
-              ))} */}
+              <div className="input-group mb-3">
+                <input type="text" className="form-control" placeholder="prompt" value={promptValue} onChange={e => setPromptValue(e.target.value)}/>
+              </div>
 
+
+              <button className='btn btn-primary' disabled={!promptValue} onClick={() => setGo(true)}>Go</button>
+            </div>
+          )}
+          {go && (
+            <div>
               <section className="pb-4">
                 <div className="bg-white border rounded-5">
                   <section className="p-4 text-center w-100">
