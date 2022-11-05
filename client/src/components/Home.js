@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import {
   useAccount,
@@ -10,7 +10,7 @@ import {
 import { abi } from '../contract-abi';
 
 const contractConfig = {
-  address: '0x9748EBbeb539f162046DC434422f478B2FF16C6E',
+  address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
   abi,
 };
 
@@ -22,12 +22,12 @@ const Home = () => {
 
   React.useEffect(() => setMounted(true), []);
 
-  const [totalMinted, setTotalMinted] = React.useState(0);
   const { isConnected } = useAccount();
 
   const { config: contractWriteConfig } = usePrepareContractWrite({
     ...contractConfig,
-    functionName: 'mint',
+    functionName: 'callMidpoint',
+    args: [promptValue]
   });
 
   const {
@@ -35,14 +35,8 @@ const Home = () => {
     write: mint,
     isLoading: isMintLoading,
     isSuccess: isMintStarted,
-    error: mintError,
+    error: mintError
   } = useContractWrite(contractWriteConfig);
-
-  const { data: totalSupplyData } = useContractRead({
-    ...contractConfig,
-    functionName: 'totalSupply',
-    watch: true,
-  });
 
   const {
     data: txData,
@@ -51,12 +45,6 @@ const Home = () => {
   } = useWaitForTransaction({
     hash: mintData?.hash,
   });
-
-  React.useEffect(() => {
-    if (totalSupplyData) {
-      setTotalMinted(totalSupplyData.toNumber());
-    }
-  }, [totalSupplyData]);
 
   const isMinted = txSuccess;
 
@@ -71,6 +59,10 @@ const Home = () => {
     'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png'
   ]
 
+  useEffect(() => {
+    console.log('txData', txData)
+  }, [txData])
+
   return (
     <div>
       <div className="container">
@@ -78,9 +70,6 @@ const Home = () => {
         <div className=''>
           <div style={{ padding: '24px 24px 24px 0' }}>
             <h1>NFT Demo Mint</h1>
-            <p style={{ margin: '12px 0 24px' }}>
-              {totalMinted} minted so far!
-            </p>
             <ConnectButton />
 
             {mintError && (
@@ -96,6 +85,27 @@ const Home = () => {
           </div>
         </div>
 
+        {mounted && isConnected && !isMinted && (
+          <button
+            style={{ marginTop: 24 }}
+            // disabled={!mint || isMintLoading || isMintStarted}
+            className="button"
+            data-mint-loading={isMintLoading}
+            data-mint-started={isMintStarted}
+            onClick={() => {
+              console.log("Clicked")
+              mint?.('hello')
+            }}
+          >
+            {isMintLoading && 'Waiting for approval'}
+            {isMintStarted && 'Minting...'}
+            {!isMintLoading && !isMintStarted && 'Mint'}
+          </button>
+        )}
+
+        {isMinted && (
+          <div>Hello</div>
+        )}
         <div>
           {isConnected && (
             <div>
