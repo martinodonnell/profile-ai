@@ -12,8 +12,7 @@ async function createNftFromUrl(name, description, url) {
   //   const image = new File([data], "image.png", { type: "image/png" });
   //   console.log(image);
 
-  const apiKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQyZmE2M0QxRUViY2ExOTZCOUY2NkExNGZmRWIzMzE1RUUzNUEwMzkiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2NzY2OTQ2OTUwNywibmFtZSI6InByb2ZpbGUtYWkifQ.aFYesiLlCfxjGx3Saz-dLsdj4kYAgDNaI-Oc1gIs8ks";
+  const apiKey = ""; // TODO
   const client = new NFTStorage({ token: apiKey });
   //   const metadata = await client.store({
   //     image,
