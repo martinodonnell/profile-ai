@@ -132,13 +132,17 @@ const Home = () => {
                 </div>
 
                 {selectedImage && (
-                  <div className="col-lg-4 mb-4 mb-lg-0">
-                    <div className="bg-image hover-overlay ripple shadow-1-strong rounded" data-ripple-color="light">
-                      <img src={selectedImage} className="w-100"/>
-                      <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
-                        <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.2)' }}></div>
-                      </a>
+                  <div>
+                    <div className="col-lg-4 mb-4 mb-lg-0">
+                      <div className="bg-image hover-overlay ripple shadow-1-strong rounded" data-ripple-color="light">
+                        <img src={selectedImage} className="w-100"/>
+                        <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
+                          <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.2)' }}></div>
+                        </a>
+                      </div>
                     </div>
+
+                    <button className='btn btn-primary' disabled={!promptValue}>Mint</button>
                   </div>
                 )}
               </section>
