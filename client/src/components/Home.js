@@ -11,7 +11,7 @@ import {
 import { abi } from '../contract-abi';
 
 const contractConfig = {
-  address: '0xa81Cc5498CeBd1f9A2d71241B00f3C125f70731B',
+  address: '0xA2bE5C3ea1f5658A3A4773f4B87eA1Cd92721Ef9',
   abi,
 };
 
@@ -30,7 +30,6 @@ const Home = () => {
     functionName: 'callMidpoint',
     args: [promptValue]
   });
-
 
   const { data: supplyData2 } = useContactReads({
     ...contractConfig,
