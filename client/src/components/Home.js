@@ -11,6 +11,7 @@ import { abi } from '../contract-abi';
 // import { response } from '../midpointResponse';
 import { createNftFromUrl } from '../libs/createNft';
 import { NFTStorage, File } from 'nft.storage'
+import { EnsResolveFromAddr } from '../libs/ensResolve';
 import { apiKey } from '../env'
 import Dashboard from './Dashboard'
 import Prompt from './Prompt'
@@ -55,6 +56,8 @@ const Home = () => {
     functionName: 'callMidpoint',
     args: [promptValue]
   });
+
+  const ensName = EnsResolveFromAddr()
 
   const {
     data: mintData,

@@ -7,5 +7,6 @@ export async function EnsResolveFromAddr(){
     const url = "https://mainnet.gateway.tenderly.co/GbOVk8vhnTsWdbfDLWXtT"
     const provider = new ethers.providers.JsonRpcProvider(url)
     const name =  await provider.lookupAddress(address)
+    console.log("RESOLVE ADDR TO ENS", ensName)
     return name
 }
