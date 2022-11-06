@@ -4,7 +4,6 @@ import cross from '../assets/cross.png';
 import hand from '../assets/hand.png';
 import gif from '../assets/git.gif';
 import ConnectButtonHeader from './ConnectButtonHeader'
-import ChatSupport from './ChatSupport'
 
 const Dashboard = () => {
   return (
@@ -12,8 +11,8 @@ const Dashboard = () => {
       <div className="container justify-content-center">
         <div className='text-center'>
           <ConnectButtonHeader/>
-          <img src={cross} alt="Cross" width={'150px'} style={{position: 'absolute', right: '256px', top: '90px' }}/>
-          <img src={hand} alt="Hand" width={'200px'} style={{position: 'absolute', left: '200px', bottom: '180px', transform: 'rotate(-80deg)'}}/>
+          <img src={cross} alt="Cross" width={'150px'} style={{position: 'absolute', right: '353px', top: '90px' }}/>
+          <img src={hand} alt="Hand" width={'200px'} style={{position: 'absolute', left: '206px', bottom: '101px', transform: 'rotate(290deg)'}}/>
 
           <img src={gif} alt="Hand" width={'200px'} className='rounded-5 mb-5' />
           <h1 style={{fontSize: '48px'}}>Lets build a</h1>

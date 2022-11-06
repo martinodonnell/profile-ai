@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import ConnectButtonHeader from './ConnectButtonHeader'
 import ChatSupport from './ChatSupport'
+import { ethers } from 'ethers';
 
 import {
   useContractRead
@@ -31,7 +32,7 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
   const { config: nftContractWriteConfig } = usePrepareContractWrite({
     ...nftContractConfig,
     functionName: "mintNFT",
-    args: [address, ipfsUri],
+    args: [address, selectedImage],
   });
 
   const {
@@ -49,6 +50,10 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
   } = useWaitForTransaction({
     hash: nftMintData?.hash,
   });
+
+  useEffect(() => {
+    console.log('txData', txData)
+  })
 
   const { data: totalSupplyData1 } = useContractRead({
     ...contractConfig,
@@ -74,9 +79,7 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
   },[totalSupplyData1, totalSupplyData2])
 
   React.useEffect(() => {
-    console.log('ipfsUri upsed:', ipfsUri)
     if(ipfsUri) {
-      console.log('Minting', ipfsUri)
       mint?.()
       setLoading(false)
     }
@@ -96,7 +99,7 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
     .then(
       (result) => {
         setIpfsUri(result.ipfsUri)
-        })
+      })
   }
 
   return (
@@ -106,14 +109,14 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
         {loading || isNftMintLoading ? (
           <LoadingMinting/>
         ) : isNftMintSuccess ?  (
-            <Success url={selectedImage}/>
+            <Success url={selectedImage} ipfsUri={ipfsUri}/>
         ) :(
           <>
             <h1>2- Which one you like most?</h1>
-            <p>Just made with a bunch of love with AIdentity {'<3'}. If you dont like the results, we can always generate new version after you review the prompt again.</p>
+            <p>Made with love with ProfileAI ❤️. If you don't like the results, you can always try again.</p>
 
             <fieldset>
-              <legend>Select a maintenance drone:</legend>
+              <legend>Select your next profile picture:</legend>
             </fieldset>
 
             <section className="pb-4">
@@ -126,7 +129,7 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
                           <div className="col-lg-4 mb-4 mb-lg-0" onClick={() => setSelectedImage(url)}>
                             <div className="bg-image hover-overlay ripple shadow-1-strong rounded" data-ripple-color="light">
                               <img src={url} className="w-100"  height='300px' width='300px'class='img-fluid'/>
-                              <input type="radio" id="huey" name="drone" value="huey" checked={url == selectedImage}/>
+                              <input type="radio" id="huey" name="drone" value="huey" checked={url == selectedImage} className='mt-3'/>
                             </div>
                           </div>
                         ))}
@@ -137,7 +140,7 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
               </div>
             </section>
             <div className='w-100 d-flex justify-content-evenly mt-5'>
-              <button className='btn btn-secondary'>Go back</button>
+              <button className='btn btn-secondary'>Retry</button>
               <button className="btn btn-primary" onClick={() => mintNft()} disabled={!selectedImage}>
                 Create NFT
               </button>

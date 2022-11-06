@@ -15,7 +15,7 @@ const Loading = () => {
 
           <div className='mt-5'>
             <p className='m-0'>Please confirm the transaction and send some love over,</p>
-            <p className='m-0'>NFTs doesnt grow from trees.</p>
+            <p className='m-0'>NFTs doesn't grow from trees.</p>
           </div>
 
           <img src={loadingAnimation} alt="Hand" width={'200px'} />

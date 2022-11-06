@@ -17,7 +17,7 @@ const Loading = () => {
 
           <div className='mt-5'>
             <p className='m-0'>We are all in this together, right?</p>
-            <p className='m-0'>Please confirm the transaction and wait some seconds.</p>
+            <p className='m-0'>Please confirm the transaction and wait a few seconds</p>
           </div>
 
           <img src={loadingAnimation} alt="Hand" width={'200px'} />

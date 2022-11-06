@@ -51,7 +51,6 @@ const Home = () => {
   useEffect(() => {
     const array = [totalSupplyData1, totalSupplyData2].filter((url) => url !== null)
     setImages(array)
-    console.log(array)
   },[totalSupplyData1, totalSupplyData2])
 
   const { config: contractWriteConfig } = usePrepareContractWrite({
@@ -106,6 +105,7 @@ const Home = () => {
     setGo(true)
     mint?.()
   }
+  // return <SelectImage/>
 
   if (!promptValue || !go) {
     return <Prompt setPromptValue={setPromptValue} promptValue={promptValue} submit={submitPromp}/>
