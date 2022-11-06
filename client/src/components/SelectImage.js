@@ -32,7 +32,7 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
   const { config: nftContractWriteConfig } = usePrepareContractWrite({
     ...nftContractConfig,
     functionName: "mintNFT",
-    args: [address, selectedImage],
+    args: [address, ipfsUri],
   });
 
   const {
@@ -79,26 +79,26 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
   },[totalSupplyData1, totalSupplyData2])
 
   React.useEffect(() => {
-    if(ipfsUri) {
+    if(ipfsUri && mint && loading) {
       mint?.()
       setLoading(false)
     }
-  },[ipfsUri])
+  },[ipfsUri, mint])
 
-  const mintNft = () => {
+  const mintNft = async () => {
     setLoading(true)
 
     fetch("http://localhost:5001/api", {
       method: 'POST',
-      body: JSON.stringify({selectedImage: selectedImage }),
+      body: JSON.stringify({selectedImage: selectedImage, prompt: promptValue, name: address  }),
       headers: {
         'Content-Type': 'application/json',
       },
     } )
     .then(res => res.json())
     .then(
-      (result) => {
-        setIpfsUri(result.ipfsUri)
+      async (result) => {
+        await setIpfsUri(result.ipfsUri)
       })
   }
 

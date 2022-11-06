@@ -16,22 +16,27 @@ app.use(cors({
 }))
 
 app.post("/api", async (req, res) => {
+  console.log('url', req.body['selectedImage'])
   const asdasdasd = await fetch(req.body['selectedImage']);
   const data = await asdasdasd.blob();
   const client = new NFTStorage({ token: apiKey });
   const cidString = await client.storeBlob(data);
 
+  console.log('url', cidString)
   const jsonStr = JSON.stringify({
-    "name": "name2  name",
-    "description": "description description",
+    "name": req.body['name'],
+    "description": req.body['prompt'],
     "image": `ipfs://${cidString}`
   });
+  console.log('jsonStr', JSON.stringify(jsonStr))
   const bytes = new TextEncoder().encode(jsonStr);
   const blob = new Blob([bytes], {
       type: "application/json;charset=utf-8"
   });
   const cidString2 = await client.storeBlob(blob)
 
+  console.log("final", cidString2)
+  console.log(cidString2)
   res.send({ ipfsUri: `ipfs://${cidString2}`  });
 });
 

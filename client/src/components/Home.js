@@ -105,7 +105,6 @@ const Home = () => {
     setGo(true)
     mint?.()
   }
-  // return <SelectImage/>
 
   if (!promptValue || !go) {
     return <Prompt setPromptValue={setPromptValue} promptValue={promptValue} submit={submitPromp}/>
