@@ -22,12 +22,14 @@ const contractConfig = {
 const SelectImage = ({promptValue, setPromptValue, submit}) => {
   const [images, setImages] = React.useState([]);
   const [selectedImage, setSelectedImage] = React.useState('');
+  const [ipfsUri, setIpfsUri] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
   const { address } = useAccount();
 
   const { config: nftContractWriteConfig } = usePrepareContractWrite({
     ...nftContractConfig,
     functionName: "mintNFT",
-    args: [address, selectedImage],
+    args: [address, ipfsUri],
   });
 
   const {
@@ -45,10 +47,6 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
   } = useWaitForTransaction({
     hash: nftMintData?.hash,
   });
-
-  useEffect(() => {
-    console.log("succesful txData", txData)
-  }, [txSuccess])
 
   const { data: totalSupplyData1 } = useContractRead({
     ...contractConfig,
@@ -73,11 +71,37 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
     setImages(array)
   },[totalSupplyData1, totalSupplyData2])
 
+  React.useEffect(() => {
+    console.log('ipfsUri upsed:', ipfsUri)
+    if(ipfsUri) {
+      console.log('Minting', ipfsUri)
+      mint?.()
+      setLoading(false)
+    }
+  },[ipfsUri])
+
+  const mintNft = () => {
+    setLoading(true)
+
+    fetch("http://localhost:5001/api", {
+      method: 'POST',
+      body: JSON.stringify({selectedImage: selectedImage }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    } )
+    .then(res => res.json())
+    .then(
+      (result) => {
+        setIpfsUri(result.ipfsUri)
+        })
+  }
+
   return (
     <div className="page">
       <div className="container">
         <ConnectButtonHeader />
-        {isNftMintLoading ? (
+        {loading || isNftMintLoading ? (
           <LoadingMinting/>
         ) : isNftMintSuccess ?  (
             <Success url={selectedImage}/>
@@ -112,7 +136,7 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
             </section>
             <div className='w-100 d-flex justify-content-evenly mt-5'>
               <button className='btn btn-secondary'>Go back</button>
-              <button className="btn btn-primary" onClick={() => mint?.()} disabled={!selectedImage}>
+              <button className="btn btn-primary" onClick={() => mintNft()} disabled={!selectedImage}>
                 Create NFT
               </button>
             </div>
