@@ -24,7 +24,23 @@ We want a frictionless way to obtain, own, a unique personalized NFT that had ut
 
 ## 💼 Business Model
 
-Price correlates to compute needs from OpenAPI and gas fees and a flat rate for using the service.
+Price correlates with the number of calls to OpenAPI, using Optimism and gas fees a flat rate for using the service.
+
+**For retail** 
+
+- To generate the images, we charge $0.5 dollars ETH equivalent each time a set of images are retrieved from Open AI DALL-E 2.
+    - Optimism gas fees cost: $0.006 approximately
+    - OpenAI API cost: $0.002
+- $0.5 - $0.006 - $0.00002x3 = $0.493 c
+
+**For business**
+
+- We give the opportunity to businesses and protocols to use our services to mint avatars for user's internal profiles, events and collections for a special cost:
+    - $0.4 for 1000 Profile AI API call
+    - $0.35 for 1000 to 5.000 Profile AI API call
+    - $0.30 for 5000 to 10.000 Profile AI API call
+    - $0.25 for every +10.000 Profile API call
+
 
 ## ⚒️ DApplication Structure (The How)
 
