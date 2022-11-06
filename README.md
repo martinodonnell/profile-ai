@@ -36,3 +36,9 @@ A React front end that requests a payload through [OpenAI](https://beta.openai.c
 ## The Team
 
 <!--  Who we are  -->
+
+### Ideation
+
+This is the general outline of our idea creation and workflow.
+
+![](images/brainstroming_flow.png)
