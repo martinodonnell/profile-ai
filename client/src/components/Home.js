@@ -12,6 +12,7 @@ import { abi } from '../contract-abi';
 import { createNftFromUrl } from '../libs/createNft';
 import { NFTStorage, File } from 'nft.storage'
 import { apiKey } from '../env'
+import Dashboard from './Dashboard'
 
 const contractConfig = {
   address: '0xA2bE5C3ea1f5658A3A4773f4B87eA1Cd92721Ef9',
@@ -99,6 +100,10 @@ const Home = () => {
     });
 
     // console.log("Hello", apiKey, `ipfs://${cidString}`)
+  }
+
+  if (!isConnected) {
+    return <Dashboard/>
   }
 
   return (
