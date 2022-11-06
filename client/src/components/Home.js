@@ -73,11 +73,6 @@ const Home = () => {
 
   const isMinted = txSuccess;
 
-  const selectImage = (e, url) => {
-    console.log("Hello", url)
-    setSelectedImage(url)
-  }
-
   useEffect(() => {
     if(isMinted) {
       setTimeout(() => setPage(2), 4000);
