@@ -1,6 +1,7 @@
 import React from 'react';
 import multihand from '../assets/multihand.png';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import ConnectButtonHeader from './ConnectButtonHeader'
 
 const Prompt = ({promptValue, setPromptValue, submit}) => {
   return (
@@ -25,7 +26,7 @@ const Prompt = ({promptValue, setPromptValue, submit}) => {
           <button className='btn btn-primary mt-5' disabled={!promptValue} onClick={() => submit(true)}>Create profile picture</button>
         </div>
         <ConnectButton className='justify-self' />
-
+        <ConnectButtonHeader />
 
       </div>
     </div>

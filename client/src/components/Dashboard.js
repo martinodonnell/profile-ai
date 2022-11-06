@@ -3,14 +3,17 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import cross from '../assets/cross.png';
 import hand from '../assets/hand.png';
 import gif from '../assets/git.gif';
+import ConnectButtonHeader from './ConnectButtonHeader'
 
 const Dashboard = () => {
   return (
     <div className="page">
       <div className="container justify-content-center">
         <div className='text-center'>
+          <ConnectButtonHeader/>
           <img src={cross} alt="Cross" width={'150px'} style={{position: 'absolute', right: '256px', top: '90px' }}/>
-          <img src={hand} alt="Hand" width={'200px'} style={{position: 'absolute', left: '200px', bottom: '180px',transform: 'rotate(-76deg)', zIndex:0 }}/>
+          <img src={hand} alt="Hand" width={'200px'} style={{position: 'absolute', left: '200px', bottom: '180px'}}/>
+
           <img src={gif} alt="Hand" width={'200px'} className='rounded-5 mb-5' />
           <h1 style={{fontSize: '48px'}}>Lets build a</h1>
           <h1 style={{fontSize: '48px'}}><strong>cool profile picture</strong> together</h1>
