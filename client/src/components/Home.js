@@ -3,12 +3,15 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import {
   useAccount,
   useContractRead,
-  useContractReads,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
 } from 'wagmi';
 import { abi } from '../contract-abi';
+// import { response } from '../midpointResponse';
+import { createNftFromUrl } from '../libs/createNft';
+import { NFTStorage, File } from 'nft.storage'
+import { apiKey } from '../env'
 
 const contractConfig = {
   address: '0xA2bE5C3ea1f5658A3A4773f4B87eA1Cd92721Ef9',
@@ -17,6 +20,7 @@ const contractConfig = {
 
 const Home = () => {
   const [mounted, setMounted] = React.useState(false);
+  const [images, setImages] = React.useState([]);
   const [selectedImage, setSelectedImage] = React.useState();
   const [promptValue, setPromptValue] = React.useState('');
   const [go, setGo] = React.useState(false);
@@ -25,23 +29,29 @@ const Home = () => {
 
   const { isConnected } = useAccount();
 
+  const { data: totalSupplyData1 } = useContractRead({
+    ...contractConfig,
+    functionName: 'images',
+    args: [7000, 0]
+  });
+
+  const { data: totalSupplyData2 } = useContractRead({
+    ...contractConfig,
+    functionName: 'images',
+    args: [7000, 1]
+  });
+
+  useEffect(() => {
+    const array = [totalSupplyData1, totalSupplyData2].filter((url) => url !== null)
+    setImages(array)
+    console.log(array)
+  },[totalSupplyData1, totalSupplyData2])
+
   const { config: contractWriteConfig } = usePrepareContractWrite({
     ...contractConfig,
     functionName: 'callMidpoint',
     args: [promptValue]
   });
-
-  const { data: supplyData2 } = useContactReads({
-    ...contractConfig,
-    functionName: 'ResponseReceived',
-    watch: true,
-  });
-
-  React.useEffect(() => {
-    if (supplyData2){
-      console.log("Supply Data 2 called", supplyData2)
-    }
-  }, [supplyData2]);
 
   const {
     data: mintData,
@@ -51,11 +61,6 @@ const Home = () => {
     error: mintError
   } = useContractWrite(contractWriteConfig);
 
-
-  const {
-    data: supplyData,
-
-  } = useContractRead()
   const {
     data: txData,
     isSuccess: txSuccess,
@@ -78,11 +83,27 @@ const Home = () => {
   ]
 
   useEffect(() => {
-    console.log('txData', txData)
+    console.log("txData", txData, mintData)
   }, [txData])
+
+
+  const test123 = async () => {
+    const client = new NFTStorage({ token: apiKey });
+    const image = await fetch('https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png')
+    .then((res) => res.blob())
+
+    console.log("res", image)
+    // const data = await res.blob();
+    client.storeBlob(image).then(() => {
+      console.log("Hello")
+    });
+
+    // console.log("Hello", apiKey, `ipfs://${cidString}`)
+  }
 
   return (
     <div>
+      <button className='btn btn-primary' onClick={() => test123()}>Mint</button>
       <div className="container">
         <div className='d-flex flex-column'>
         <div className=''>
@@ -143,7 +164,7 @@ const Home = () => {
                     <section>
                       <section>
                         <div className="row">
-                          {imageUrls.map(url => (
+                          {images.map(url => (
                             <div className="col-lg-4 mb-4 mb-lg-0" onClick={(e) => selectImage(e, url)}>
                               <div className="bg-image hover-overlay ripple shadow-1-strong rounded" data-ripple-color="light">
                                 <img src={url} className="w-100"/>
@@ -170,7 +191,7 @@ const Home = () => {
                       </div>
                     </div>
 
-                    <button className='btn btn-primary' disabled={!promptValue}>Mint</button>
+                    <button className='btn btn-primary' disabled={!promptValue} onClick={() => createNftFromUrl('File1', "Description 1", selectedImage)}>Mint</button>
                   </div>
                 )}
               </section>

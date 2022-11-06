@@ -1,10 +1,9 @@
-// import { NFTStorage, File } from "nft.storage";
-const { NFTStorage, File } = require("nft.storage");
-const fetch = require("node-fetch");
+import { NFTStorage } from 'nft.storage';
+import { apiKey } from '../env'
 
 // https://github.com/nftstorage/nft.storage/issues/1902#issuecomment-1154011687
 // https://github.com/nftstorage/nft.storage/blob/main/examples/client/browser/storeFromUrl.html
-async function createNftFromUrl(name, description, url) {
+export async function createNftFromUrl(name, description, url) {
   const res = await fetch(url);
   //   console.log(res);
   const data = await res.blob();
@@ -12,7 +11,6 @@ async function createNftFromUrl(name, description, url) {
   //   const image = new File([data], "image.png", { type: "image/png" });
   //   console.log(image);
 
-  const apiKey = ""; // TODO
   const client = new NFTStorage({ token: apiKey });
   //   const metadata = await client.store({
   //     image,
