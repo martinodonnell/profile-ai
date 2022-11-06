@@ -12,6 +12,8 @@ Experience the seamless ownership of Non-Fungible Tokens (NTFs). An opportunity 
 
 ## 📺 Demo (Delivery and Usage)
 
+Youtube link: https://www.youtube.com/watch?v=yvZxAuUgpjA
+
 1. Connect DApp with digital wallet.
 2. Generate a prompt to describe the image.
 3. Receive a choice of three image variations.
