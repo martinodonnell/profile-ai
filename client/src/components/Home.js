@@ -13,6 +13,8 @@ import { createNftFromUrl } from '../libs/createNft';
 import { NFTStorage, File } from 'nft.storage'
 import { apiKey } from '../env'
 import Dashboard from './Dashboard'
+import Prompt from './Prompt'
+import Loading from './Loading'
 
 const contractConfig = {
   address: '0xA2bE5C3ea1f5658A3A4773f4B87eA1Cd92721Ef9',
@@ -105,6 +107,12 @@ const Home = () => {
   if (!isConnected) {
     return <Dashboard/>
   }
+
+  return <Loading/>
+  if (!promptValue || !go) {
+    return <Prompt setPromptValue={setPromptValue} promptValue={promptValue} submit={setGo}/>
+  }
+
 
   return (
     <div>
