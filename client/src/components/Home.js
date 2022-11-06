@@ -11,7 +11,7 @@ import {
 import { abi } from '../contract-abi';
 
 const contractConfig = {
-  address: '0x2Bc9Cfea55A047cF11Db0ff70f7173b73efD490C',
+  address: '0xf9dFa7abaAfFadFCD375a7C084fe258F902D834F',
   abi,
 };
 

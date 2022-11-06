@@ -1,4 +1,4 @@
-export const abi =  [
+export const abi = [
   {
     "inputs": [],
     "stateMutability": "nonpayable",
@@ -18,6 +18,12 @@ export const abi =  [
         "internalType": "string",
         "name": "prompt",
         "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "int64",
+        "name": "index",
+        "type": "int64"
       }
     ],
     "name": "RequestMade",
@@ -34,13 +40,26 @@ export const abi =  [
       },
       {
         "indexed": false,
-        "internalType": "string",
+        "internalType": "string[]",
         "name": "image_source",
-        "type": "string"
+        "type": "string[]"
       }
     ],
     "name": "ResponseReceived",
     "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "_index",
+    "outputs": [
+      {
+        "internalType": "uint64",
+        "name": "",
+        "type": "uint64"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
     "inputs": [
@@ -48,6 +67,11 @@ export const abi =  [
         "internalType": "string",
         "name": "prompt",
         "type": "string"
+      },
+      {
+        "internalType": "int64",
+        "name": "index",
+        "type": "int64"
       }
     ],
     "name": "callMidpoint",
@@ -81,9 +105,9 @@ export const abi =  [
   {
     "inputs": [
       {
-        "internalType": "uint256",
+        "internalType": "uint64",
         "name": "",
-        "type": "uint256"
+        "type": "uint64"
       },
       {
         "internalType": "uint256",
@@ -102,4 +126,4 @@ export const abi =  [
     "stateMutability": "view",
     "type": "function"
   }
-]
+],
