@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ConnectButtonHeader from './ConnectButtonHeader'
-import ChatBubble from './ChatBubble'
+import ChatSupport from './ChatSupport'
 
 import {
   useContractRead

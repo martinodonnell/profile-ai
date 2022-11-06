@@ -4,7 +4,7 @@ import cross from '../assets/cross.png';
 import hand from '../assets/hand.png';
 import gif from '../assets/git.gif';
 import ConnectButtonHeader from './ConnectButtonHeader'
-import ChatBubble from './ChatBubble'
+import ChatSupport from './ChatSupport'
 
 const Dashboard = () => {
   return (

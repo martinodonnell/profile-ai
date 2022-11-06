@@ -2,7 +2,7 @@ import React from 'react';
 import multihand from '../assets/multihand.png';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import ConnectButtonHeader from './ConnectButtonHeader'
-import ChatBubble from './ChatBubble'
+import ChatSupport from './ChatSupport'
 import { NFTStorage } from 'nft.storage';
 import { apiKey } from '../env'
 
@@ -30,6 +30,7 @@ const Prompt = ({promptValue, setPromptValue, submit}) => {
           <button className='btn btn-primary mt-5' disabled={!promptValue} onClick={() => submit()}>Create profile picture</button>
         </div>
         <ConnectButtonHeader />
+        <ChatSupport />
 
       </div>
     </div>

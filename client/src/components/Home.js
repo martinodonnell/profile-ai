@@ -16,7 +16,7 @@ import Dashboard from './Dashboard'
 import Prompt from './Prompt'
 import Loading from './Loading'
 import SelectImage from './SelectImage'
-import ChatBubble from './ChatBubble'
+import ChatSupport from './ChatSupport'
 
 
 const contractConfig = {

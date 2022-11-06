@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ensdomains/ensjs": "^3.0.0-alpha.33",
+    "@pushprotocol/restapi": "^0.2.1",
     "@pushprotocol/uiweb": "^0.2.3",
     "@rainbow-me/rainbowkit": "^0.7.4",
     "@testing-library/jest-dom": "^5.16.5",
