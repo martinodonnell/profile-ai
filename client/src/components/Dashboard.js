@@ -13,7 +13,7 @@ const Dashboard = () => {
         <div className='text-center'>
           <ConnectButtonHeader/>
           <img src={cross} alt="Cross" width={'150px'} style={{position: 'absolute', right: '256px', top: '90px' }}/>
-          <img src={hand} alt="Hand" width={'200px'} style={{position: 'absolute', left: '200px', bottom: '180px'}}/>
+          <img src={hand} alt="Hand" width={'200px'} style={{position: 'absolute', left: '200px', bottom: '180px', transform: 'rotate(-80deg)'}}/>
 
           <img src={gif} alt="Hand" width={'200px'} className='rounded-5 mb-5' />
           <h1 style={{fontSize: '48px'}}>Lets build a</h1>
