@@ -40,44 +40,48 @@ const Success = ({ url, ensName }) => {
           </div>
 
           <div className="d-flex justify-content-evenly">
-            <img
-              src={ens}
-              alt="ens"
-              width={"250px"}
-              className="my-2"
-              style={{ cursor: "pointer" }}
-            />
-            <img
-              src={lens}
-              alt="lens"
-              width={"250px"}
-              className="my-2"
-              style={{ cursor: "pointer" }}
-            />
+            <a
+              href={
+                ensName
+                  ? `https://app.ens.domains/name/${ensName}/details`
+                  : "https://app.ens.domains/"
+              }
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={ens} alt="ens" width={"250px"} className="my-2" />
+            </a>
+            <a href="https://www.lens.xyz/" target="_blank" rel="noreferrer">
+              <img src={lens} alt="lens" width={"250px"} className="my-2" />
+            </a>
           </div>
 
           <div className="d-flex justify-content-evenly">
-            <img
-              src={twitter}
-              alt="twitter"
-              width={"250px"}
-              className="my-2"
-              style={{ cursor: "pointer" }}
-            />
-            <img
-              src={instagram}
-              alt="instagram"
-              width={"250px"}
-              className="my-2"
-              style={{ cursor: "pointer" }}
-            />
+            <a href="https://twitter.com/" target="_blank" rel="noreferrer">
+              <img
+                src={twitter}
+                alt="twitter"
+                width={"250px"}
+                className="my-2"
+              />
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noreferrer">
+              <img
+                src={instagram}
+                alt="instagram"
+                width={"250px"}
+                className="my-2"
+              />
+            </a>
           </div>
 
           <div
             className="d-flex justify-content-center align-items-center pe-auto"
             style={{ cursor: "pointer" }}
           >
-            <img src={download} alt="Hand" width={"30px"} className="my-2" />
+            <a href={url} target="_blank" rel="noreferrer">
+              <img src={download} alt="Hand" width={"30px"} className="my-2" />
+            </a>
             <p className="m-0">Download</p>
           </div>
 
