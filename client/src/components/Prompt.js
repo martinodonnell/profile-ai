@@ -6,7 +6,7 @@ import { NFTStorage } from 'nft.storage';
 import { apiKey } from '../env'
 
 
-const Prompt = ({promptValue, setPromptValue, submit, setPage}) => {
+const Prompt = ({promptValue, setPromptValue, submit}) => {
   return (
     <div className="page">
       <div className="container">
@@ -26,7 +26,7 @@ const Prompt = ({promptValue, setPromptValue, submit, setPage}) => {
         </div>
 
         <div className='d-flex justify-content-center w-100'>
-          <button className='btn btn-primary mt-5' disabled={!promptValue} onClick={() => submit(true)}>Create profile picture</button>
+          <button className='btn btn-primary mt-5' disabled={!promptValue} onClick={() => submit()}>Create profile picture</button>
         </div>
         <ConnectButtonHeader />
 

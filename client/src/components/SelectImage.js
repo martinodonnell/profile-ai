@@ -62,8 +62,14 @@ const SelectImage = ({promptValue, setPromptValue, submit}) => {
     args: [7000, 1]
   });
 
+  const { data: totalSupplyData3 } = useContractRead({
+    ...contractConfig,
+    functionName: 'images',
+    args: [7000, 2]
+  });
+
   React.useEffect(() => {
-    const array = [totalSupplyData1, totalSupplyData2, 'https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350'].filter((url) => url !== null)
+    const array = [totalSupplyData1, totalSupplyData2, totalSupplyData3].filter((url) => url !== null)
     setImages(array)
   },[totalSupplyData1, totalSupplyData2])
 

@@ -91,21 +91,22 @@ const Home = () => {
   }
 
   useEffect(() => {
-    console.log("txData", txData, mintData)
-  }, [txData])
-
-  useEffect(() => {
-    if(promptValue && go) {
-      setTimeout(() => setPage(2), 5000);
-    }
-  }, [promptValue, go])
+   if(isMinted) {
+    setTimeout(() => setPage(2), 10000);
+   }
+  }, [isMinted])
 
   if (!isConnected) {
     return <Dashboard/>
   }
 
+  const submitPromp = () => {
+    setGo(true)
+    mint?.()
+  }
+
   if (!promptValue || !go) {
-    return <Prompt setPromptValue={setPromptValue} promptValue={promptValue} submit={setGo}/>
+    return <Prompt setPromptValue={setPromptValue} promptValue={promptValue} submit={submitPromp}/>
   }
 
   if(page == 1) {
