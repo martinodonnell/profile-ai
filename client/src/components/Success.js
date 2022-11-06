@@ -5,13 +5,28 @@ import lens from '../assets/lens.png';
 import twitter from '../assets/twitter.png';
 import ens from '../assets/ens.png';
 import download from '../assets/download.png';
-
+import { ensResolveFromAddr } from '../libs/ensResolve'
 import ConnectButtonHeader from './ConnectButtonHeader'
+import { useAccount } from 'wagmi';
 
 const Success = ({url}) => {
+  const [ensName, setEnsName] = React.useState('')
+  const { address } = useAccount();
+
+
+  React.useEffect(() => {
+    const fetchEndName = async () => {
+      const name = await ensResolveFromAddr(address)
+      console.log('name')
+      setEnsName(name)
+    }
+    fetchEndName()
+  }, [])
+
   return (
     <div className="page">
       <div className="container justify-content-center">
+        {ensName}
         <div className='text-center'>
           <img src={url} alt="profile picture" width={'200px'} className='rounded-5 my-5' />
           <h1 style={{fontSize: '48px'}}>You got it! It's yours now, so let's</h1>

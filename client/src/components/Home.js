@@ -9,15 +9,11 @@ import {
 } from 'wagmi';
 import { abi } from '../contract-abi';
 import { createNftFromUrl } from '../libs/createNft';
-import { NFTStorage, File } from 'nft.storage'
-import { EnsResolveFromAddr } from '../libs/ensResolve';
-import { apiKey } from '../env'
 import Dashboard from './Dashboard'
 import Prompt from './Prompt'
 import Loading from './Loading'
 import SelectImage from './SelectImage'
 import ChatSupport from './ChatSupport'
-
 
 const contractConfig = {
   address: '0xA2bE5C3ea1f5658A3A4773f4B87eA1Cd92721Ef9',
@@ -58,15 +54,6 @@ const Home = () => {
     functionName: 'callMidpoint',
     args: [promptValue]
   });
-
-  useEffect(() => {
-    console.log("hasdadasd")
-    const fetchEndName = async () => {
-      console.log("Sdsdsdsd")
-      console.log(await EnsResolveFromAddr())
-    }
-    fetchEndName()
-  }, [])
 
   const {
     data: mintData,
