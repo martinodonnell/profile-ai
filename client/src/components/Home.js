@@ -100,7 +100,7 @@ const Home = () => {
   if (page == 1) {
     return <Loading />;
   } else {
-    return <SelectImage />;
+    return <SelectImage promptValue={promptValue}/>;
   }
 };
 

@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import ConnectButtonHeader from "./ConnectButtonHeader";
-import ChatSupport from "./ChatSupport";
-import { ethers } from "ethers";
 import { ensResolveFromAddr } from "../libs/ensResolve";
-
 import { useContractRead } from "wagmi";
 import { abi } from "../contract-abi";
 import { nftContractConfig } from "../contract-abi-nfts";
@@ -21,7 +18,7 @@ const contractConfig = {
   abi,
 };
 
-const SelectImage = ({ promptValue, setPromptValue, submit }) => {
+const SelectImage = ({ promptValue }) => {
   const [images, setImages] = React.useState([]);
   const [selectedImage, setSelectedImage] = React.useState("");
   const [ipfsUri, setIpfsUri] = React.useState("");
@@ -89,6 +86,12 @@ const SelectImage = ({ promptValue, setPromptValue, submit }) => {
 
   const mintNft = async () => {
     setLoading(true);
+
+    console.log("SOM COOL DATA", JSON.stringify({
+      selectedImage: selectedImage,
+      prompt: promptValue,
+      name: address,
+    }))
 
     fetch("http://localhost:5001/api", {
       method: "POST",

@@ -37,7 +37,7 @@ app.post("/api", async (req, res) => {
 
   console.log("final", cidString2)
   console.log(cidString2)
-  res.send({ ipfsUri: `ipfs://${cidString2}`  });
+  res.send({ ipfsUri: `ipfs://${cidString2}`});
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
