@@ -91,9 +91,9 @@ const Home = () => {
   }
 
   useEffect(() => {
-   if(isMinted) {
-    setTimeout(() => setPage(2), 10000);
-   }
+    if(isMinted) {
+      setTimeout(() => setPage(2), 10000);
+    }
   }, [isMinted])
 
   if (!isConnected) {
