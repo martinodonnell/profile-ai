@@ -1,14 +1,20 @@
 import { Chat } from "@pushprotocol/uiweb";
+import { pushApiKey } from '../env'
+import {
+  useAccount
+} from 'wagmi';
 
 const ChatSupport = () =>{
-    return (
-        <Chat
-        account="0x6430C47973FA053fc8F055e7935EC6C2271D5174" //user address
-        supportAddress="0xd9c1CCAcD4B8a745e191b62BA3fcaD87229CB26d" //support address
-        apiKey="jVPMCRom1B.iDRMswdehJG7NpHDiECIHwYMMv6k2KzkPJscFIDyW8TtSnk4blYnGa8DIkfuacU0"
-        env="staging"
-      />
-    );
+  const { address } = useAccount();
+
+  return (
+    <Chat
+      account={address} //user address
+      supportAddress="0x84e87837C550F38a0B64C2365689Fce90DCf9774" //support address
+      apiKey={pushApiKey}
+      env="staging"
+    />
+  );
 };
 
 
