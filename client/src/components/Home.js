@@ -11,7 +11,7 @@ import {
 import { abi } from '../contract-abi';
 
 const contractConfig = {
-  address: '0x19d7Ada7566102d58Eec5AEaA2A10acdC3ed45Fd',
+  address: '0x2Bc9Cfea55A047cF11Db0ff70f7173b73efD490C',
   abi,
 };
 
@@ -41,9 +41,8 @@ const Home = () => {
   React.useEffect(() => {
     if (supplyData2){
       console.log("Supply Data 2 called", supplyData2)
-
     }
-  }, []);
+  }, [supplyData2]);
 
   const {
     data: mintData,
