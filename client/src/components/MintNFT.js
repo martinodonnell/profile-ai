@@ -7,7 +7,7 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 
-const MintNFT = ({ url }) => {
+const MintNFT = ({ url, disabled, setIsLoadingNft }) => {
   const { address } = useAccount();
 
   const { config: nftContractWriteConfig } = usePrepareContractWrite({
@@ -32,23 +32,19 @@ const MintNFT = ({ url }) => {
     hash: nftMintData?.hash,
   });
 
-  const test = () => {
-    console.log("clicked");
-    console.log(nftMintData);
-    console.log(mint);
-    mint?.();
-  };
+  useEffect(() => {
+    console.log("succesful txData", txData)
+  }, [txSuccess])
+
+  useEffect(() => {
+    setIsLoadingNft(isNftMintLoading)
+  }, [isNftMintLoading])
+
 
   return (
-    <div>
-      <button className="btn btn-primary" onClick={() => test()}>
-        Mint
-      </button>
-
-      <p>{txSuccess ? "Succees" : "no success"}</p>
-      <p>{txError ? "Error" : "no success"}</p>
-      <p>{txData ? txData : "no txData"}</p>
-    </div>
+    <button className="btn btn-primary" onClick={() => mint?.()} disabled={disabled}>
+      Create NFT
+    </button>
   );
 };
 

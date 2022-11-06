@@ -25,7 +25,6 @@ const Prompt = ({promptValue, setPromptValue, submit}) => {
         <div className='d-flex justify-content-center w-100'>
           <button className='btn btn-primary mt-5' disabled={!promptValue} onClick={() => submit(true)}>Create profile picture</button>
         </div>
-        <ConnectButton className='justify-self' />
         <ConnectButtonHeader />
 
       </div>

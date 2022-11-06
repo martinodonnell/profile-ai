@@ -8,7 +8,6 @@ import {
   useWaitForTransaction,
 } from 'wagmi';
 import { abi } from '../contract-abi';
-// import { response } from '../midpointResponse';
 import { createNftFromUrl } from '../libs/createNft';
 import { NFTStorage, File } from 'nft.storage'
 import { EnsResolveFromAddr } from '../libs/ensResolve';
@@ -16,6 +15,7 @@ import { apiKey } from '../env'
 import Dashboard from './Dashboard'
 import Prompt from './Prompt'
 import Loading from './Loading'
+import SelectImage from './SelectImage'
 
 const contractConfig = {
   address: '0xA2bE5C3ea1f5658A3A4773f4B87eA1Cd92721Ef9',
@@ -57,7 +57,14 @@ const Home = () => {
     args: [promptValue]
   });
 
-  const ensName = EnsResolveFromAddr()
+  useEffect(() => {
+    console.log("hasdadasd")
+    const fetchEndName = async () => {
+      console.log("Sdsdsdsd")
+      console.log(await EnsResolveFromAddr())
+    }
+    fetchEndName()
+  }, [])
 
   const {
     data: mintData,
@@ -82,12 +89,6 @@ const Home = () => {
     setSelectedImage(url)
   }
 
-  const imageUrls = [
-    'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png',
-    'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png',
-    'https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png'
-  ]
-
   useEffect(() => {
     console.log("txData", txData, mintData)
   }, [txData])
@@ -107,15 +108,16 @@ const Home = () => {
     // console.log("Hello", apiKey, `ipfs://${cidString}`)
   }
 
-  if (!isConnected) {
-    return <Dashboard/>
-  }
+  // if (!isConnected) {
+  //   return <Dashboard/>
+  // }
 
-  return <Loading/>
-  if (!promptValue || !go) {
-    return <Prompt setPromptValue={setPromptValue} promptValue={promptValue} submit={setGo}/>
-  }
+  // if (!promptValue || !go) {
+  //   return <Prompt setPromptValue={setPromptValue} promptValue={promptValue} submit={setGo}/>
+  // }
 
+  // return <Loading/>
+  return <SelectImage/>
 
   return (
     <div>
