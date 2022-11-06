@@ -2,6 +2,7 @@ import React from 'react';
 import loveHands from '../assets/love-hands.png';
 import loadingAnimation from '../assets/loading-animation.gif';
 import ConnectButtonHeader from './ConnectButtonHeader'
+import ChatBubble from './ChatBubble'
 
 const Success = ({url}) => {
   return (

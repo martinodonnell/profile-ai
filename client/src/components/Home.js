@@ -16,6 +16,8 @@ import Dashboard from './Dashboard'
 import Prompt from './Prompt'
 import Loading from './Loading'
 import SelectImage from './SelectImage'
+import ChatBubble from './ChatBubble'
+
 
 const contractConfig = {
   address: '0xA2bE5C3ea1f5658A3A4773f4B87eA1Cd92721Ef9',

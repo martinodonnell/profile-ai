@@ -3,7 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@ensdomains/ensjs": "~2.1",
+=======
+    "@ensdomains/ensjs": "^3.0.0-alpha.33",
+    "@pushprotocol/uiweb": "^0.2.3",
+>>>>>>> 93c5f1f (add ChatButton component)
     "@rainbow-me/rainbowkit": "^0.7.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -16,6 +21,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.6",
     "wagmi": "^0.7.12",
     "web-vitals": "^2.1.4"
   },

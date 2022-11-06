@@ -2,6 +2,7 @@ import React from 'react';
 import multihand from '../assets/multihand.png';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import ConnectButtonHeader from './ConnectButtonHeader'
+import ChatBubble from './ChatBubble'
 import { NFTStorage } from 'nft.storage';
 import { apiKey } from '../env'
 

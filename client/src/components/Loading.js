@@ -2,6 +2,7 @@ import React from 'react';
 import fingercross from '../assets/fingercross.png';
 import loadingAnimation from '../assets/loading-animation.gif';
 import ConnectButtonHeader from './ConnectButtonHeader'
+import ChatBubble from './ChatBubble'
 
 const Loading = () => {
   return (
