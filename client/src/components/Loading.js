@@ -1,5 +1,5 @@
 import React from 'react';
-import grouphands from '../assets/grouphands.png';
+import fingercross from '../assets/fingercross.png';
 import loadingAnimation from '../assets/loading-animation.gif';
 import ConnectButtonHeader from './ConnectButtonHeader'
 
@@ -8,7 +8,7 @@ const Loading = () => {
     <div className="page">
       <div className="container justify-content-center">
         <div className='text-center'>
-          <img src={grouphands} alt="Hand" width={'200px'} className='rounded-5 mb-5' />
+          <img src={fingercross} alt="Hand" width={'200px'} className='rounded-5 mb-5' />
           <h1 style={{fontSize: '48px'}}>Lets build a</h1>
           <h1 style={{fontSize: '48px'}}><strong>cool profile picture</strong> together</h1>
 

@@ -28,6 +28,7 @@ const Home = () => {
   const [selectedImage, setSelectedImage] = React.useState();
   const [promptValue, setPromptValue] = React.useState('');
   const [go, setGo] = React.useState(false);
+  const [page, setPage] = React.useState(1);
 
   React.useEffect(() => setMounted(true), []);
 
@@ -93,35 +94,28 @@ const Home = () => {
     console.log("txData", txData, mintData)
   }, [txData])
 
+  useEffect(() => {
+    if(promptValue && go) {
+      setTimeout(() => setPage(2), 5000);
+    }
+  }, [promptValue, go])
 
-  const test123 = async () => {
-    const client = new NFTStorage({ token: apiKey });
-    const image = await fetch('https://cdn.openai.com/dall-e/v2/samples/anthropomorphism/091432009673a3a126fdec860933cdce_10.png')
-    .then((res) => res.blob())
-
-    console.log("res", image)
-    // const data = await res.blob();
-    client.storeBlob(image).then(() => {
-      console.log("Hello")
-    });
-
-    // console.log("Hello", apiKey, `ipfs://${cidString}`)
+  if (!isConnected) {
+    return <Dashboard/>
   }
 
-  // if (!isConnected) {
-  //   return <Dashboard/>
-  // }
+  if (!promptValue || !go) {
+    return <Prompt setPromptValue={setPromptValue} promptValue={promptValue} submit={setGo}/>
+  }
 
-  // if (!promptValue || !go) {
-  //   return <Prompt setPromptValue={setPromptValue} promptValue={promptValue} submit={setGo}/>
-  // }
-
-  // return <Loading/>
-  return <SelectImage/>
+  if(page == 1) {
+    return <Loading/>
+  } else {
+    return <SelectImage/>
+  }
 
   return (
     <div>
-      <button className='btn btn-primary' onClick={() => test123()}>Mint</button>
       <div className="container">
         <div className='d-flex flex-column'>
         <div className=''>

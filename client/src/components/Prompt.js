@@ -2,8 +2,11 @@ import React from 'react';
 import multihand from '../assets/multihand.png';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import ConnectButtonHeader from './ConnectButtonHeader'
+import { NFTStorage } from 'nft.storage';
+import { apiKey } from '../env'
 
-const Prompt = ({promptValue, setPromptValue, submit}) => {
+
+const Prompt = ({promptValue, setPromptValue, submit, setPage}) => {
   return (
     <div className="page">
       <div className="container">
