@@ -74,7 +74,7 @@ const Home = () => {
 
   useEffect(() => {
     if (isMinted) {
-      setTimeout(() => setPage(2), 4000);
+      setTimeout(() => setPage(2), 15000);
     }
   }, [isMinted]);
 

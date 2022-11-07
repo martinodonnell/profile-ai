@@ -21,6 +21,7 @@ const Loading = () => {
           <img src={loadingAnimation} alt="Hand" width={'200px'} />
 
           <ConnectButtonHeader />
+          <ChatSupport />
         </div>
       </div>
     </div>
