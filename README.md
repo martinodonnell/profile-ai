@@ -1,16 +1,16 @@
+# Profile AI
+
+Generates and mints AI profile image as NFTS for sale on chain. 
+
+![](images/homepage.png)
+
+## 👨‍💻 Background
+
 This project was created at the EthSanFrancisco 2022 Hackathon and won the "Best Use of a Midpoint GET Request" prize from [Midpoint](https://www.midpointapi.com/), as well as the runner up prize from [Push Protocol](https://push.org/) and an integration bounty from [ENS](https://ens.domains/). See more details about [this project on the ETH Global showcase](https://ethglobal.com/showcase/profile-ai-eaw58).
 
 <p align="center">
   <img width="622" alt="Screen Shot 2022-11-08 at 10 57 24 PM" src="https://user-images.githubusercontent.com/6640905/200775011-0b9cf53a-0d21-4d54-be92-c9ebdd660e97.png">
 </p>
-
----
-
-# Profile AI
-
-![](images/homepage.png)
-
-Generates and mints AI profile image as NFTS for sale on chain. 
 
 ## 🎤 Pitch (The What)
 
